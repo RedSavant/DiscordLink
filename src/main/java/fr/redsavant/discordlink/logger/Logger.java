@@ -1,7 +1,7 @@
 package fr.redsavant.discordlink.logger;
 
 import fr.redsavant.discordlink.DiscordLinkPlugin;
-import net.minecraft.data.Main;
+import org.bukkit.Bukkit;
 
 import static fr.redsavant.utils.Colorize.colorize;
 
@@ -13,7 +13,7 @@ public class Logger {
     }
 
     public void log(String message, LogLevel level) {
-        if (level.ordinal() < this.logLevel.ordinal()) {
+        if (level != LogLevel.NEUTRAL && level.ordinal() < this.logLevel.ordinal()) {
             return;
         }
         String formattedMessage = switch (level) {
@@ -24,6 +24,10 @@ public class Logger {
             case SEVERE -> "<color:#6B6B6B>[ᴅɪꜱᴄᴏʀᴅʟɪɴᴋ]</color> <color:#B3002C>{SEVERE}</color> <reset>" + message;
         };
 
-        DiscordLinkPlugin.getInstance().getServer().getConsoleSender().sendMessage(colorize(formattedMessage));
+        if (DiscordLinkPlugin.getInstance() != null) {
+            DiscordLinkPlugin.getInstance().getServer().getConsoleSender().sendMessage(colorize(formattedMessage));
+        } else {
+            Bukkit.getConsoleSender().sendMessage(colorize(formattedMessage));
+        }
     }
 }
