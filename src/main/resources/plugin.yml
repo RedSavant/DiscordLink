@@ -1,0 +1,5 @@
+name: DiscordLink
+version: '${version}'
+main: fr.redsavant.discordlink.DiscordLinkPlugin
+api-version: 26.2
+author: RS
