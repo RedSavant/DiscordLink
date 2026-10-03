@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     kotlin("jvm") version "2.3.0-RC"
     id("io.papermc.paperweight.userdev") version "2.0.0-beta.21"
@@ -58,4 +60,42 @@ tasks.processResources {
     filesMatching("plugin.yml") {
         expand(props)
     }
+}
+
+val botDir = file("bot")
+
+val installBotDeps by tasks.registering(Exec::class) {
+    workingDir(botDir)
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        commandLine("cmd", "/c", "pnpm install")
+    } else {
+        commandLine("sh", "-c", "pnpm install")
+    }
+}
+
+val buildBot by tasks.registering(Exec::class) {
+    dependsOn(installBotDeps)
+    workingDir(botDir)
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        commandLine("cmd", "/c", "pnpm build")
+    } else {
+        commandLine("sh", "-c", "pnpm build")
+    }
+}
+
+tasks.processResources {
+    dependsOn(buildBot)
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir("bot/dist")
+            include("index.js", "plugin.yml", "config.yml")
+        }
+    }
+}
+
+tasks.build {
+    dependsOn("shadowJar")
 }
