@@ -50,8 +50,8 @@ public class NodeRuntimeManager {
         }
 
         String arch;
-        if (osArch.contains("arm") || osArch.contains("aarch64")) {
-            arch = platform.equals("darwin") ? "arm64" : "x64";
+        if (osArch.contains("aarch64") || osArch.contains("arm64")) {
+            arch = "arm64";
         } else {
             arch = "x64";
         }
@@ -99,15 +99,18 @@ public class NodeRuntimeManager {
         archiveFile.delete();
         deleteDirectory(extractDir);
 
-        dlogger.log("[DiscordLink] Sucessfully installed Node.js runtime : " + targetNodeFile.getAbsolutePath(), LogLevel.INFO);
+        dlogger.log("Successfully installed Node.js runtime: " + targetNodeFile.getAbsolutePath(), LogLevel.INFO);
         return targetNodeFile;
     }
 
     private static void downloadFile(String urlStr, File destination) throws IOException, InterruptedException {
-        dlogger.log("[DiscordLink] Downloading from " + urlStr + " ...", LogLevel.INFO);
+        dlogger.log("Downloading " + urlStr + " ...", LogLevel.INFO);
         HttpClient client = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NORMAL).build();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(urlStr)).build();
         HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
+        if (response.statusCode() != 200) {
+            throw new IOException("Download failed with HTTP " + response.statusCode());
+        }
 
         try (InputStream in = response.body(); FileOutputStream fos = new FileOutputStream(destination)) {
             byte[] buffer = new byte[8192];
@@ -139,7 +142,9 @@ public class NodeRuntimeManager {
     private static void extractTarGz(File tarGzFile, File targetDir) throws IOException, InterruptedException {
         ProcessBuilder pb = new ProcessBuilder("tar", "-xzf", tarGzFile.getAbsolutePath(), "-C", targetDir.getAbsolutePath());
         Process process = pb.start();
-        process.waitFor();
+        if (process.waitFor() != 0) {
+            throw new IOException("Unable to extract " + tarGzFile.getName());
+        }
     }
 
     private static void deleteDirectory(File dir) {
