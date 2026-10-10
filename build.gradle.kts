@@ -3,7 +3,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 plugins {
     kotlin("jvm") version "2.3.0-RC"
     id("io.papermc.paperweight.userdev") version "2.0.0-beta.21"
-    id("com.gradleup.shadow") version "8.3.0"
+    id("com.gradleup.shadow") version "9.4.3"
     id("xyz.jpenilla.run-paper") version "2.3.1"
 }
 
@@ -16,6 +16,7 @@ repositories {
         name = "papermc-repo"
     }
     maven("https://jitpack.io")
+    maven("https://raw.githubusercontent.com/dominicfeliton/SmartInvs/bukkit-maven-repo")
 }
 
 dependencies {
@@ -24,6 +25,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     annotationProcessor("org.projectlombok:lombok:1.18.42")
     implementation("com.github.RedSavant:RSUtils:v1.1.1")
+    implementation("fr.minuskube.inv:bukkit-smart-invs:1.5.0")
 
     paperweight.paperDevBundle("26.2.build.+")
 }
@@ -51,6 +53,10 @@ tasks.withType<io.papermc.paperweight.tasks.JavaLauncherTask>().configureEach {
 
 tasks.build {
     dependsOn("shadowJar")
+}
+
+tasks.shadowJar {
+    relocate("fr.minuskube.inv", "fr.redsavant.discordlink.libs.smartinvs")
 }
 
 tasks.processResources {
@@ -91,11 +97,7 @@ sourceSets {
     main {
         resources {
             srcDir("bot/dist")
-            include("index.js", "plugin.yml", "config.yml")
+            include("index.js", "plugin.yml", "config.yml", "languages/**", "legacy/**", "emojis.yml")
         }
     }
-}
-
-tasks.build {
-    dependsOn("shadowJar")
 }
