@@ -1,4 +1,4 @@
-![First](assets/modrinth/discordbanner.png)
+![First](assets/discordlink/discordbanner.png)
 <br>
 <p align="center">
   <a href="https://papermc.io/">
@@ -113,7 +113,7 @@ Open the main menu with `/discordlink gui` (alias `/dl gui`).
 - **Mandatory linking**: require Discord linking before joining the server
 - **Bypass system**: players, UUIDs or permission can skip linking
 
-[![Kick](https://cdn.modrinth.com/data/2RbnHQFK/images/f74980cb6e354444f7ad391aec78d3cde20a5e99_350.webp)](https://modrinth.com/plugin/discord-link/gallery)
+<a href="https://modrinth.com/plugin/discord-link/gallery"><img src="assets/discordlink/kick.png" alt="Kick" width="350"></a>
 
 ### 🤖 Discord Bot Integration
 - **Automatic role management**: roles assigned on link
@@ -123,8 +123,8 @@ Open the main menu with `/discordlink gui` (alias `/dl gui`).
 - **Slash commands & Components V2** interface
 - **Full customization** from config or directly from the panel
 
-![Link](https://cdn.modrinth.com/data/2RbnHQFK/images/3e82a79f56f8b736397e63e01eaa083cec4368f7.png)
-![ExampleBot](https://cdn.modrinth.com/data/2RbnHQFK/images/99c4568b4671cbbabd81b8db0b0caf324e8bd6c1.png)
+![Link](assets/discordlink/example-1.png)
+![ExampleBot](assets/discordlink/example-2.png)
 
 ### 📜 Advanced Logging
 - **Connection / disconnection logs**: IP, UUID, username, timestamp
@@ -134,7 +134,7 @@ Open the main menu with `/discordlink gui` (alias `/dl gui`).
 - **Translated logs**: logs follow the server default language
 - **Components V2 containers**: colors configurable per event
 
-![Logs](https://cdn.modrinth.com/data/2RbnHQFK/images/1337cd53a6fd0b333833376f44cb76f7db1a735b_350.webp)
+![Logs](assets/discordlink/log.png)
 
 ### 👥 Player Management
 - **In-game commands**: `/link`, `/unlink`, `/linkinfo`, `/lang`
