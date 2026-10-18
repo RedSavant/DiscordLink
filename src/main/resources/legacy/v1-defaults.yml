@@ -1,0 +1,39 @@
+messages:
+  prefix: §8[§b§lDiscord§8] §r
+  link-success: §aTon compte a été lié avec succès !
+  already-linked: §cTon compte est déjà lié !
+  invalid-code: §cCode invalide ou expiré !
+  code-generated: '§aCode généré : §e%code%
+
+    §7Utilise §b/link %code%§7 sur Discord.'
+  unlink-success: §aTon compte a été délié !
+  not-linked: §cTon compte n'est pas lié !
+  unlink-other-success: §aCompte de §e%player%§a délié !
+  player-not-found: §cJoueur introuvable dans la base de données !
+  info-linked: '§aCompte lié à Discord : §e%discord%'
+  info-not-linked: §cCompte non lié.
+  reload-success: §aConfiguration rechargée !
+  no-permission: §cTu n'as pas la permission !
+link-required:
+  kick-message: '§c§lCompte non lié !
+
+
+    §7Lie ton compte Discord pour rejoindre le serveur.
+
+    §7Rejoins notre Discord : §b§ndiscord.gg/votreserveur
+
+
+    §e§lTon code de liaison : §f%code%
+
+    §7Utilise §b/link %code%§7 sur Discord
+
+    §7Le code expire dans §e5 minutes
+
+    '
+link-command:
+  message: '§a§lLiaison Discord
+
+
+    §7Utilise la commande §b/link %code%§7 sur Discord.
+
+    §7Le code expire dans §e5 minutes§7.'

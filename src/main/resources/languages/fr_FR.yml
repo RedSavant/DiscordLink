@@ -1,0 +1,760 @@
+meta:
+  name: "Français"
+  flag: "🇫🇷"
+  icon: BLUE_BANNER
+  minecraft-locales: [fr_fr, fr_ca, fr_be, fr_ch]
+  discord-locales: [fr]
+
+console:
+  bot-starting: "Démarrage du bot Discord..."
+  bot-ready: "Bot Discord connecté en tant que {tag}"
+  bot-exited: "Le processus du bot s'est arrêté (code {code})"
+  bot-restarting: "Redémarrage du bot dans 5 secondes..."
+  bot-disabled: "Le bot Discord est désactivé (discord.enabled = false)."
+  token-missing: "Le token Discord est manquant dans config.yml !"
+  linked: "{player} a lié son compte à {discord}"
+  unlinked: "{player} a été délié (par {actor})"
+  setting-changed: "Paramètre {path} = {value} (par {actor})"
+  reloaded-by: "Configuration rechargée par {actor}"
+  update-available: "Une nouvelle version est disponible : {latest} (actuelle : {current}) → {url}"
+
+minecraft:
+  prefix: "<dark_gray>[<gradient:#5865F2:#EB459E>DiscordLink</gradient>]</dark_gray> "
+  date-format: "dd/MM/yyyy HH:mm"
+
+  errors:
+    players-only: "<red>Cette commande est réservée aux joueurs.</red>"
+    no-permission: "<red>Tu n'as pas la permission.</red>"
+    player-not-found: "<red>Aucun compte lié trouvé pour <yellow>{player}</yellow>.</red>"
+    unknown-locale: "<red>Langue inconnue : <yellow>{locale}</yellow>.</red>"
+    gui-disabled: "<red>Les menus sont désactivés sur ce serveur.</red>"
+    lang-disabled: "<red>Le changement de langue est désactivé sur ce serveur.</red>"
+
+  link:
+    code: "<gray>Ton code de liaison : <click:copy_to_clipboard:'{code}'><hover:show_text:'<gray>Clique pour copier</gray>'><yellow><bold>{code}</bold></yellow></hover></click><newline>{instructions}<newline><gray>Il expire dans <yellow>{minutes} min</yellow>.</gray>"
+    already-linked: "<yellow>Ton compte est déjà lié à <aqua>{discord}</aqua>.</yellow>"
+    linked: "<green>✔ Ton compte a été lié à <aqua>{discord}</aqua> !</green>"
+
+  unlink:
+    success: "<green>✔ Ton compte Discord a été délié.</green>"
+    not-linked: "<red>Ton compte n'est lié à aucun compte Discord.</red>"
+    notify: "<yellow>Ton compte Discord a été délié par <aqua>{actor}</aqua>.</yellow>"
+
+  linkinfo:
+    not-linked: "<red>Ton compte n'est pas lié. Utilise <aqua>/link</aqua> pour obtenir un code.</red>"
+    other-not-linked: "<red><yellow>{player}</yellow> n'a pas de compte lié.</red>"
+    details:
+      - "<dark_gray>────────────────────────</dark_gray>"
+      - "<gradient:#5865F2:#EB459E><bold>⛓ Liaison de {player}</bold></gradient>"
+      - "<gray>UUID :</gray> <white>{uuid}</white>"
+      - "<gray>Discord :</gray> <aqua>{discord}</aqua> <dark_gray>({discord_id})</dark_gray>"
+      - "<gray>Lié le :</gray> <white>{date}</white>"
+      - "<gray>Langue :</gray> <white>{language}</white>"
+      - "<dark_gray>────────────────────────</dark_gray>"
+
+  lang:
+    current: "<gray>Langue actuelle : <yellow>{language}</yellow></gray>"
+    changed: "<green>✔ Langue changée en <yellow>{language}</yellow>.</green>"
+    list-entry: "<dark_gray>»</dark_gray> <click:run_command:'/lang {locale}'><hover:show_text:'<gray>Clique pour choisir</gray>'><yellow>{language}</yellow> <dark_gray>({locale})</dark_gray></hover></click>"
+
+  forceunlink:
+    usage: "<red>Utilisation : <yellow>/forceunlink <joueur></yellow></red>"
+    success: "<green>✔ Le compte de <yellow>{player}</yellow> a été délié.</green>"
+
+  reload:
+    success: "<green>✔ Configuration et langues rechargées.</green>"
+
+  version: "<gray>DiscordLink <green>v{version}</green> par <aqua>RedSavant</aqua></gray>"
+
+  help:
+    - "<dark_gray>────────────────────────</dark_gray>"
+    - "<gradient:#5865F2:#EB459E><bold>⛓ DiscordLink</bold></gradient>"
+    - "<yellow>/link</yellow> <gray>Obtenir un code de liaison</gray>"
+    - "<yellow>/unlink</yellow> <gray>Délier ton compte Discord</gray>"
+    - "<yellow>/linkinfo [joueur]</yellow> <gray>Voir les infos de liaison</gray>"
+    - "<yellow>/lang [langue]</yellow> <gray>Changer ta langue</gray>"
+    - "<yellow>/forceunlink <joueur></yellow> <gray>Délier un joueur</gray>"
+    - "<yellow>/dl gui</yellow> <gray>Ouvrir le menu d'administration</gray>"
+    - "<yellow>/dl reload</yellow> <gray>Recharger la configuration</gray>"
+    - "<dark_gray>────────────────────────</dark_gray>"
+
+  kick:
+    not-linked:
+      - "<gradient:#5865F2:#EB459E><bold>⛓ Compte non lié</bold></gradient>"
+      - ""
+      - "<gray>Pour rejoindre le serveur, lie ton compte Discord.</gray>"
+      - ""
+      - "<gray>Ton code :</gray> <yellow><bold>{code}</bold></yellow>"
+      - "{instructions}"
+      - ""
+      - "<dark_gray>Le code expire dans {minutes} minute(s).</dark_gray>"
+    unlinked:
+      - "<gradient:#5865F2:#EB459E><bold>⛓ Compte délié</bold></gradient>"
+      - ""
+      - "<gray>Ton compte Discord a été délié.</gray>"
+      - "<gray>Reconnecte-toi pour obtenir un nouveau code.</gray>"
+
+  instructions:
+    command: "<gray>Sur Discord, utilise</gray> <aqua>/link code:{code}</aqua> <gray>ou le bouton</gray> <aqua>Lier mon compte</aqua><gray>.</gray>"
+    channel: "<gray>Sur Discord, envoie ce code dans le salon</gray> <aqua>{channel}</aqua><gray>.</gray>"
+    both: "<gray>Sur Discord, envoie ce code dans</gray> <aqua>{channel}</aqua> <gray>ou utilise</gray> <aqua>/link code:{code}</aqua><gray>.</gray>"
+    unknown-channel: "le salon de liaison"
+
+  update-available: "<yellow>Une mise à jour est disponible : <green>{latest}</green> <gray>(actuelle : {current})</gray> <click:open_url:'{url}'><aqua><underlined>Télécharger</underlined></aqua></click></yellow>"
+
+  chat:
+    prompt: "<gray>Écris ta recherche dans le chat <dark_gray>({seconds}s)</dark_gray>. Tape <yellow>{cancel}</yellow> pour annuler.</gray>"
+    cancel-word: "annuler"
+    cancelled: "<gray>Recherche annulée.</gray>"
+    timeout: "<red>Temps écoulé, recherche annulée.</red>"
+
+  gui:
+    states:
+      enabled: "<green>Activé</green>"
+      disabled: "<red>Désactivé</red>"
+      online: "<green>● En ligne</green>"
+      offline: "<gray>● Hors ligne</gray>"
+      unknown: "Inconnu"
+      none: "Aucune"
+
+    messages:
+      codes-cleared: "<green>✔ {count} code(s) expiré(s) supprimé(s).</green>"
+      resynced: "<green>✔ Rôles de <yellow>{player}</yellow> resynchronisés.</green>"
+      bypass: "<green>✔ Bypass de <yellow>{player}</yellow> : {state}</green>"
+      language-set: "<green>✔ Langue de <yellow>{player}</yellow> changée en <yellow>{language}</yellow>.</green>"
+
+    common:
+      close:
+        material: BARRIER
+        name: "<red>Fermer</red>"
+      back:
+        material: ARROW
+        name: "<yellow>← Retour</yellow>"
+      previous:
+        material: SPECTRAL_ARROW
+        name: "<yellow>← Page précédente</yellow>"
+      next:
+        material: SPECTRAL_ARROW
+        name: "<yellow>Page suivante →</yellow>"
+
+    main:
+      title: "<dark_gray>DiscordLink</dark_gray> <gray>» Menu</gray>"
+      items:
+        bot-online:
+          material: BEACON
+          name: "<green>● Bot en ligne</green>"
+          lore:
+            - "<gray>Bot :</gray> <white>{tag}</white>"
+            - "<gray>Ping :</gray> <white>{ping} ms</white>"
+            - "<gray>Serveur :</gray> <white>{guild}</white>"
+        bot-offline:
+          material: BARRIER
+          name: "<red>● Bot hors ligne</red>"
+          lore:
+            - "<gray>Le bot n'est pas connecté.</gray>"
+            - "<gray>Vérifie le token et la console.</gray>"
+        linked:
+          material: LEAD
+          name: "<aqua>Comptes liés</aqua>"
+          lore:
+            - "<gray>Total :</gray> <white>{count}</white>"
+            - "<gray>Joueurs en ligne :</gray> <white>{online}</white>"
+        codes:
+          material: PAPER
+          name: "<yellow>Codes en attente</yellow>"
+          lore:
+            - "<gray>Codes actifs :</gray> <white>{count}</white>"
+            - ""
+            - "<yellow>Clic</yellow> <gray>pour supprimer les codes expirés</gray>"
+        language:
+          material: BOOK
+          name: "<gold>Ma langue</gold>"
+          lore:
+            - "<gray>Actuelle :</gray> <white>{language}</white>"
+            - ""
+            - "<yellow>Clic</yellow> <gray>pour changer</gray>"
+        players:
+          material: PLAYER_HEAD
+          name: "<aqua>Joueurs liés</aqua>"
+          lore:
+            - "<gray>Parcourir, rechercher et gérer</gray>"
+            - "<gray>les comptes liés.</gray>"
+        settings:
+          material: COMPARATOR
+          name: "<gold>Paramètres du bot</gold>"
+          lore:
+            - "<gray>Activer ou désactiver les fonctionnalités.</gray>"
+        reload:
+          material: CLOCK
+          name: "<green>Recharger</green>"
+          lore:
+            - "<gray>Recharge config.yml et les langues.</gray>"
+
+    players:
+      title: "<dark_gray>Joueurs liés</dark_gray> <gray>({page}/{pages})</gray>"
+      filters:
+        all: "Tous"
+        online: "En ligne"
+        offline: "Hors ligne"
+      items:
+        player:
+          material: PLAYER_HEAD
+          name: "<aqua>{player}</aqua>"
+          lore:
+            - "<gray>Discord :</gray> <white>{discord}</white>"
+            - "<gray>Lié le :</gray> <white>{date}</white>"
+            - "<gray>Langue :</gray> <white>{language}</white>"
+            - "<gray>Statut :</gray> {status}"
+            - ""
+            - "<yellow>Clic</yellow> <gray>pour gérer</gray>"
+        empty:
+          material: STRUCTURE_VOID
+          name: "<gray>Aucun joueur trouvé</gray>"
+        filter:
+          material: HOPPER
+          name: "<yellow>Filtre : <white>{filter}</white></yellow>"
+          lore:
+            - "<yellow>Clic</yellow> <gray>pour passer à :</gray> <white>{next}</white>"
+        search:
+          material: OAK_SIGN
+          name: "<yellow>Rechercher</yellow>"
+          lore:
+            - "<gray>Actuelle :</gray> <white>{query}</white>"
+            - "<gray>Pseudo, UUID ou utilisateur Discord.</gray>"
+            - ""
+            - "<yellow>Clic</yellow> <gray>pour écrire dans le chat</gray>"
+        clear-search:
+          material: BARRIER
+          name: "<red>Effacer la recherche</red>"
+
+    player:
+      title: "<dark_gray>Joueur</dark_gray> <gray>» {player}</gray>"
+      items:
+        info:
+          material: PLAYER_HEAD
+          name: "<aqua>{player}</aqua>"
+          lore:
+            - "<gray>UUID :</gray> <white>{uuid}</white>"
+            - "<gray>Discord :</gray> <white>{discord}</white> <dark_gray>({discord_id})</dark_gray>"
+            - "<gray>Lié le :</gray> <white>{date}</white>"
+            - "<gray>Langue :</gray> <white>{language}</white>"
+            - "<gray>Bypass :</gray> {bypass}"
+            - "<gray>Statut :</gray> {status}"
+        unlink:
+          material: SHEARS
+          name: "<red>Délier le compte</red>"
+          lore:
+            - "<gray>Supprime la liaison Discord.</gray>"
+            - "<gray>Le joueur sera expulsé si la liaison est obligatoire.</gray>"
+        resync:
+          material: ENDER_PEARL
+          name: "<aqua>Resynchroniser les rôles</aqua>"
+          lore:
+            - "<gray>Réapplique les rôles Discord.</gray>"
+        bypass:
+          material: SHIELD
+          name: "<gold>Bypass</gold>"
+          lore:
+            - "<gray>État :</gray> {state}"
+            - "<gray>Permet de rejoindre sans liaison.</gray>"
+            - ""
+            - "<yellow>Clic</yellow> <gray>pour basculer</gray>"
+        language:
+          material: BOOK
+          name: "<gold>Langue</gold>"
+          lore:
+            - "<gray>Actuelle :</gray> <white>{language}</white>"
+            - ""
+            - "<yellow>Clic</yellow> <gray>pour changer</gray>"
+
+    confirm:
+      title: "<dark_red>Confirmation</dark_red>"
+      items:
+        confirm:
+          material: LIME_CONCRETE
+          name: "<green><bold>Confirmer</bold></green>"
+        cancel:
+          material: RED_CONCRETE
+          name: "<red><bold>Annuler</bold></red>"
+      actions:
+        unlink:
+          material: SHEARS
+          name: "<red>Délier {player} ?</red>"
+          lore:
+            - "<gray>Cette action est irréversible.</gray>"
+
+    language:
+      title: "<dark_gray>Langue</dark_gray> <gray>» {player}</gray>"
+      items:
+        entry:
+          name: "<gold>{language}</gold>"
+          lore:
+            - "<dark_gray>{locale}</dark_gray>"
+            - ""
+            - "<yellow>Clic</yellow> <gray>pour choisir</gray>"
+          lore-selected:
+            - "<dark_gray>{locale}</dark_gray>"
+            - ""
+            - "<green>✔ Langue actuelle</green>"
+
+    settings:
+      title: "<dark_gray>Paramètres</dark_gray> <gray>» Bot</gray>"
+      toggle-lore:
+        - ""
+        - "<gray>État :</gray> {state}"
+        - "<yellow>Clic</yellow> <gray>pour basculer</gray>"
+      number-lore:
+        - ""
+        - "<gray>Valeur :</gray> <white>{value}</white>"
+        - "<yellow>Clic gauche</yellow> <gray>+{step}</gray> <dark_gray>|</dark_gray> <yellow>Clic droit</yellow> <gray>-{step}</gray>"
+        - "<yellow>Shift</yellow> <gray>pour ×10</gray> <dark_gray>(min {min}, max {max})</dark_gray>"
+      locale-lore:
+        - ""
+        - "<gray>Actuelle :</gray> <white>{value}</white>"
+        - "<yellow>Clic</yellow> <gray>pour passer à la suivante</gray>"
+      mode-lore:
+        - ""
+        - "<gray>Actuel :</gray> <white>{value}</white>"
+        - "<yellow>Clic</yellow> <gray>pour passer à :</gray> <white>{next}</white>"
+      modes:
+        COMMAND: "Commande / bouton"
+        CHANNEL: "Salon"
+        BOTH: "Commande + salon"
+      entries:
+        linking-required:
+          material: IRON_DOOR
+          name: "<aqua>Liaison obligatoire</aqua>"
+          description: ["<gray>Expulse les joueurs non liés.</gray>"]
+        linking-channel-delete-messages:
+          material: LAVA_BUCKET
+          name: "<aqua>Supprimer les codes envoyés</aqua>"
+          description: ["<gray>Supprime les messages du salon de liaison.</gray>"]
+        linking-mode:
+          material: OBSERVER
+          name: "<gold>Méthode de liaison</gold>"
+          description: ["<gray>Comment les joueurs entrent leur code.</gray>"]
+        roles-linked-enabled:
+          material: NAME_TAG
+          name: "<aqua>Rôle « lié »</aqua>"
+          description: ["<gray>Donne un rôle aux comptes liés.</gray>"]
+        roles-linked-remove-on-unlink:
+          material: SHEARS
+          name: "<aqua>Retirer le rôle à la déliaison</aqua>"
+          description: ["<gray>Retire le rôle « lié » au unlink.</gray>"]
+        roles-online-enabled:
+          material: LIME_DYE
+          name: "<aqua>Rôle « en ligne »</aqua>"
+          description: ["<gray>Rôle pour les joueurs connectés.</gray>"]
+        roles-online-remove-on-quit:
+          material: GRAY_DYE
+          name: "<aqua>Retirer à la déconnexion</aqua>"
+          description: ["<gray>Retire le rôle « en ligne » au départ.</gray>"]
+        roles-resync-on-startup:
+          material: RECOVERY_COMPASS
+          name: "<aqua>Resync au démarrage</aqua>"
+          description: ["<gray>Resynchronise les rôles au lancement du bot.</gray>"]
+        roles-sync-nickname:
+          material: WRITABLE_BOOK
+          name: "<aqua>Synchroniser le pseudo</aqua>"
+          description: ["<gray>Renomme le membre avec son pseudo Minecraft.</gray>"]
+        logs-enabled:
+          material: BOOKSHELF
+          name: "<aqua>Logs</aqua>"
+          description: ["<gray>Active tous les logs Discord.</gray>"]
+        logs-show-ip:
+          material: SPYGLASS
+          name: "<aqua>Afficher l'IP</aqua>"
+          description: ["<gray>Affiche l'IP dans les logs de connexion.</gray>"]
+        logs-events-join:
+          material: OAK_DOOR
+          name: "<aqua>Logs de connexion</aqua>"
+        logs-events-quit:
+          material: DARK_OAK_DOOR
+          name: "<aqua>Logs de déconnexion</aqua>"
+        logs-events-link:
+          material: LEAD
+          name: "<aqua>Logs de liaison</aqua>"
+        logs-events-unlink:
+          material: TRIPWIRE_HOOK
+          name: "<aqua>Logs de déliaison</aqua>"
+        logs-events-panel-actions:
+          material: COMMAND_BLOCK
+          name: "<aqua>Logs du panel Discord</aqua>"
+        logs-events-gui-actions:
+          material: CHEST
+          name: "<aqua>Logs des menus en jeu</aqua>"
+        language-auto-detect-client:
+          material: COMPASS
+          name: "<aqua>Détection langue Minecraft</aqua>"
+          description: ["<gray>Utilise la langue du client au premier join.</gray>"]
+        language-auto-detect-discord:
+          material: ENDER_EYE
+          name: "<aqua>Détection langue Discord</aqua>"
+          description: ["<gray>Le bot répond dans la langue Discord.</gray>"]
+        language-allow-player-choice:
+          material: BOOK
+          name: "<aqua>Choix de la langue</aqua>"
+          description: ["<gray>Autorise la commande /lang.</gray>"]
+        discord-activity-enabled:
+          material: JUKEBOX
+          name: "<aqua>Statut du bot</aqua>"
+          description: ["<gray>Affiche le nombre de joueurs en activité.</gray>"]
+        panel-confirm-actions:
+          material: REDSTONE_TORCH
+          name: "<aqua>Confirmation (panel)</aqua>"
+          description: ["<gray>Demande confirmation sur Discord.</gray>"]
+        gui-confirm-actions:
+          material: LEVER
+          name: "<aqua>Confirmation (menus)</aqua>"
+          description: ["<gray>Demande confirmation en jeu.</gray>"]
+        linking-code-length:
+          material: PAPER
+          name: "<gold>Longueur des codes</gold>"
+        linking-code-expiration:
+          material: CLOCK
+          name: "<gold>Expiration des codes (s)</gold>"
+        language-default:
+          material: GLOBE_BANNER_PATTERN
+          name: "<gold>Langue par défaut</gold>"
+
+discord:
+  commands:
+    link:
+      description: "Lier ton compte Minecraft"
+      options:
+        code: "Le code reçu en jeu"
+    unlink:
+      description: "Délier ton compte Minecraft"
+    linkinfo:
+      description: "Voir les informations de liaison"
+      options:
+        user: "Utilisateur à consulter"
+    lang:
+      description: "Choisir la langue du bot"
+    panel:
+      description: "Ouvrir le panel d'administration DiscordLink"
+    linkmessage:
+      description: "Envoyer le message expliquant comment se lier"
+      options:
+        channel: "Salon où envoyer le message (par défaut : salon de liaison)"
+
+  common:
+    online: "{e:online} En ligne"
+    offline: "{e:offline} Hors ligne"
+    enabled: "{e:enabled} Activé"
+    disabled: "{e:disabled} Désactivé"
+    none: "*Aucun*"
+
+  errors:
+    server-unreachable: "Impossible de joindre le serveur Minecraft, réessaie plus tard."
+    generic: "Une erreur est survenue."
+
+  link:
+    success: "### {e:success} Compte lié !\nTon compte Discord est maintenant lié à **{player}**.\nTu peux rejoindre le serveur."
+    invalid-code: "### {e:error} Code invalide\nCe code est invalide ou a expiré. Reconnecte-toi au serveur pour en obtenir un nouveau."
+    discord-already-linked: "### {e:warning} Déjà lié\nTon compte Discord est déjà lié à **{player}**. Utilise `/unlink` d'abord."
+    player-already-linked: "### {e:warning} Déjà lié\nLe compte **{player}** est déjà lié à un autre compte Discord."
+    channel-hint: "Envoie uniquement ton **code de liaison** dans ce salon (reçu en te connectant au serveur)."
+
+  link-message:
+    title: "## {e:link} Lier ton compte Minecraft"
+    intro:
+      - "Pour jouer sur **{server}**, ton compte Minecraft doit être lié à ton compte Discord."
+      - "-# Adresse du serveur : `{address}`"
+    steps:
+      command:
+        - "**1.** Connecte-toi au serveur Minecraft : tu seras expulsé avec un **code à {length} caractères**."
+        - "**2.** Clique sur **Lier mon compte** ci-dessous et entre ton code."
+        - "**3.** C'est fait ! Reconnecte-toi au serveur."
+        - "-# Tu peux aussi utiliser la commande `/link code:<code>`."
+      channel:
+        - "**1.** Connecte-toi au serveur Minecraft : tu seras expulsé avec un **code à {length} caractères**."
+        - "**2.** Envoie simplement ce code dans {channel}."
+        - "**3.** C'est fait ! Reconnecte-toi au serveur."
+      both:
+        - "**1.** Connecte-toi au serveur Minecraft : tu seras expulsé avec un **code à {length} caractères**."
+        - "**2.** Clique sur **Lier mon compte** ci-dessous, ou envoie ton code dans {channel}."
+        - "**3.** C'est fait ! Reconnecte-toi au serveur."
+    footer: "-# {e:timer} Le code expire après {minutes} minute(s)."
+    buttons:
+      link: "Lier mon compte"
+      info: "Mes informations"
+    modal:
+      title: "Lier mon compte Minecraft"
+      label: "Code de liaison"
+      description: "Le code affiché quand tu t'es connecté au serveur"
+      placeholder: "Ex : ABC123 ({length} caractères)"
+
+  unlink:
+    success: "### {e:success} Compte délié\nTon compte n'est plus lié à **{player}**."
+    not-linked: "Ton compte Discord n'est lié à aucun compte Minecraft."
+
+  linkinfo:
+    self-not-linked: "Ton compte n'est pas lié. Connecte-toi au serveur pour obtenir un code, puis utilise `/link`."
+    not-linked: "{user} n'a pas de compte Minecraft lié."
+    title: "{e:account} {player}"
+    lines:
+      - "**Discord** : {discord}"
+      - "**UUID** : `{uuid}`"
+      - "**Lié le** : {date} ({relative})"
+      - "**Langue** : {language}"
+      - "**Statut** : {status}"
+
+  lang:
+    title: "{e:language} Langue du bot"
+    current: "Langue actuelle : **{language}**"
+    placeholder: "Choisis une langue"
+    auto: "Automatique"
+    auto-description: "Suivre la langue de ton client Discord"
+    changed: "Langue changée : **{language}**"
+
+  logs:
+    not-linked: "*Non lié*"
+    join:
+      title: "{e:join} Connexion"
+      lines:
+        - "**Joueur** : `{player}`"
+        - "**UUID** : `{uuid}`"
+        - "**Discord** : {discord}"
+        - "**IP** : ||`{ip}`||"
+    quit:
+      title: "{e:quit} Déconnexion"
+      lines:
+        - "**Joueur** : `{player}`"
+        - "**UUID** : `{uuid}`"
+        - "**Discord** : {discord}"
+    link:
+      title: "{e:link} Compte lié"
+      lines:
+        - "**Joueur** : `{player}`"
+        - "**UUID** : `{uuid}`"
+        - "**Discord** : {discord}"
+    unlink:
+      title: "{e:unlinked} Compte délié"
+      lines:
+        - "**Joueur** : `{player}`"
+        - "**UUID** : `{uuid}`"
+        - "**Discord** : {discord}"
+        - "**Par** : {actor}"
+    gui:
+      title: "{e:gui-action} Action en jeu"
+      lines:
+        - "**Admin** : `{actor}`"
+        - "**Action** : {action}"
+        - "**Cible** : `{target}`"
+        - "**Valeur** : {value}"
+      actions:
+        reload: "Rechargement de la configuration"
+        clear-codes: "Suppression des codes expirés"
+        unlink: "Déliaison forcée"
+        resync: "Resynchronisation des rôles"
+        bypass-on: "Bypass activé"
+        bypass-off: "Bypass désactivé"
+        language: "Changement de langue"
+        setting: "Modification d'un paramètre"
+        link-message: "Envoi du message de liaison"
+    panel:
+      title: "{e:panel-action} Action du panel"
+      lines:
+        - "**Admin** : {actor}"
+        - "**Action** : {action}"
+        - "**Cible** : `{target}`"
+        - "**Valeur** : {value}"
+      actions:
+        reload: "Rechargement de la configuration"
+        clear-codes: "Suppression des codes expirés"
+        unlink: "Déliaison forcée"
+        resync: "Resynchronisation des rôles"
+        bypass-on: "Bypass activé"
+        bypass-off: "Bypass désactivé"
+        language: "Changement de langue"
+        setting: "Modification d'un paramètre"
+        link-message: "Envoi du message de liaison"
+
+  panel:
+    subtitle: "DiscordLink v{version}"
+    disabled: "Le panel est désactivé."
+    no-access: "Tu n'as pas accès au panel DiscordLink."
+
+    dashboard:
+      title: "{e:dashboard} Tableau de bord"
+      status-online: "{e:status-online} En ligne"
+      status-offline: "{e:status-offline} Hors ligne"
+      bot-title: "{e:bot} Bot"
+      bot:
+        - "**Statut** : {status}"
+        - "**Compte** : `{tag}`"
+        - "**Ping** : {ping} ms"
+        - "**Démarré** : {uptime}"
+      server-title: "{e:server} Serveur Minecraft"
+      server:
+        - "**Statut** : {status}"
+        - "**Version** : {software} {version}"
+        - "**Joueurs** : {online}/{max}"
+        - "**TPS** : {tps}"
+        - "**Plugin démarré** : {uptime}"
+      links-title: "{e:links} Liaisons"
+      links:
+        - "**Comptes liés** : {linked}"
+        - "**Codes en attente** : {pending}"
+
+    buttons:
+      players: "Joueurs"
+      settings: "Paramètres"
+      refresh: "Actualiser"
+      reload: "Recharger"
+      clear-codes: "Purger les codes"
+      previous: "Précédent"
+      next: "Suivant"
+      filter: "Filtre : {filter}"
+      search: "Rechercher"
+      back: "Retour"
+      clear-search: "Effacer"
+      unlink: "Délier"
+      resync: "Resync rôles"
+      bypass-on: "Activer bypass"
+      bypass-off: "Retirer bypass"
+      confirm: "Confirmer"
+      cancel: "Annuler"
+      codes: "Codes & délais"
+      link-message: "Message de liaison"
+      send-link-channel: "Envoyer dans le salon de liaison"
+
+    players:
+      title: "{e:players} Joueurs liés ({count})"
+      info: "Page {page}/{pages} · Filtre : {filter}"
+      search-active: "Recherche : « {query} »"
+      empty: "*Aucun joueur ne correspond.*"
+      line: "`{index}.` {status} **{player}** · {discord} · {date}"
+      select-placeholder: "Sélectionne un joueur à gérer"
+      filters:
+        all: "Tous"
+        online: "En ligne"
+        offline: "Hors ligne"
+
+    player:
+      not-found: "Joueur introuvable"
+      title: "{e:player} {player}"
+      lines:
+        - "**Discord** : {discord} (`{discord_name}`)"
+        - "**ID Discord** : `{discord_id}`"
+        - "**UUID** : `{uuid}`"
+        - "**Lié le** : {date} ({relative})"
+        - "**Langue** : {language}"
+        - "**Bypass** : {bypass}"
+        - "**Statut** : {status}"
+      language-placeholder: "Changer la langue du joueur"
+
+    link-message:
+      title: "{e:link-message} Message de liaison"
+      description:
+        - "Envoie dans un salon le message expliquant aux joueurs comment lier leur compte. Aperçu ci-dessous."
+        - "**Méthode** : {mode}"
+        - "**Salon de liaison** : {channel}"
+        - "**Langue du message** : {language}"
+        - "-# Le texte se modifie dans `languages/<langue>.yml` (section `discord.link-message`), la couleur et l'image dans `config.yml`."
+      channel-placeholder: "Choisis le salon où envoyer le message"
+
+    confirm:
+      title: "{e:warning} Confirmation"
+      unlink: "Veux-tu vraiment délier le compte de **{player}** ?\nIl sera expulsé si la liaison est obligatoire."
+
+    settings:
+      title: "{e:settings} Paramètres du bot"
+      toggles-title: "Fonctionnalités"
+      values-title: "Valeurs"
+      values:
+        - "**Rôle lié** : {linked_role}"
+        - "**Rôle en ligne** : {online_role}"
+        - "**Salon de logs** : {log_channel}"
+        - "**Méthode de liaison** : {link_mode} · **Salon de liaison** : {link_channel}"
+        - "**Rôles du panel** : {panel_roles}"
+        - "**Langue par défaut** : {language}"
+        - "**Codes** : {code_length} caractères · expirent après {code_expiration}s"
+        - "**Joueurs par page** : {per_page} · **Statut actualisé** toutes les {interval}s"
+      toggle-placeholder: "Activer / désactiver une fonctionnalité"
+      click-enable: "Désactivé · sélectionne pour activer"
+      click-disable: "Activé · sélectionne pour désactiver"
+      linked-role-placeholder: "Rôle donné aux comptes liés"
+      online-role-placeholder: "Rôle donné aux joueurs en ligne"
+      channel-placeholder: "Salon des logs"
+      panel-roles-placeholder: "Rôles autorisés à utiliser /panel"
+      mode-placeholder: "Méthode pour entrer le code"
+      link-channel-placeholder: "Salon de liaison"
+      modes:
+        COMMAND: "Commande / bouton"
+        CHANNEL: "Salon"
+        BOTH: "Commande + salon"
+      modes-description:
+        COMMAND: "/link ou bouton « Lier mon compte » (modal)"
+        CHANNEL: "Les joueurs envoient leur code dans le salon de liaison"
+        BOTH: "Les deux méthodes sont acceptées"
+      locale-placeholder: "Langue par défaut"
+      labels:
+        linking-required: "Liaison obligatoire"
+        linking-channel-delete-messages: "Supprimer les codes envoyés dans le salon"
+        linking-mode: "Méthode de liaison"
+        linking-channel-channel-id: "Salon de liaison"
+        roles-linked-enabled: "Rôle « lié »"
+        roles-linked-remove-on-unlink: "Retirer le rôle lié au unlink"
+        roles-online-enabled: "Rôle « en ligne »"
+        roles-online-remove-on-quit: "Retirer le rôle en ligne au départ"
+        roles-resync-on-startup: "Resync des rôles au démarrage"
+        roles-sync-nickname: "Synchroniser le pseudo"
+        logs-enabled: "Logs"
+        logs-show-ip: "Afficher l'IP dans les logs"
+        logs-events-join: "Logs de connexion"
+        logs-events-quit: "Logs de déconnexion"
+        logs-events-link: "Logs de liaison"
+        logs-events-unlink: "Logs de déliaison"
+        logs-events-panel-actions: "Logs du panel"
+        logs-events-gui-actions: "Logs des menus en jeu"
+        language-auto-detect-client: "Détection langue Minecraft"
+        language-auto-detect-discord: "Détection langue Discord"
+        language-allow-player-choice: "Choix de langue par les joueurs"
+        discord-activity-enabled: "Statut d'activité du bot"
+        panel-confirm-actions: "Confirmation dans le panel"
+        gui-confirm-actions: "Confirmation dans les menus"
+        linking-code-length: "Longueur des codes"
+        linking-code-expiration: "Expiration des codes"
+        discord-activity-update-interval: "Intervalle du statut"
+        panel-players-per-page: "Joueurs par page"
+        roles-linked-role-id: "Rôle lié"
+        roles-online-role-id: "Rôle en ligne"
+        logs-channel-id: "Salon de logs"
+        panel-allowed-roles: "Rôles du panel"
+        language-default: "Langue par défaut"
+
+    modals:
+      search:
+        title: "Rechercher un joueur"
+        label: "Pseudo, UUID ou utilisateur Discord"
+        placeholder: "Laisse vide pour tout afficher"
+      codes:
+        title: "Codes & délais"
+        length: "Longueur des codes (4-16)"
+        expiration: "Expiration des codes (30-3600 s)"
+        per-page: "Joueurs par page (1-25)"
+        interval: "Actualisation du statut (15-3600 s)"
+
+    notices:
+      reloaded: "Configuration et langues rechargées."
+      codes-cleared: "{count} code(s) expiré(s) supprimé(s)."
+      unlinked: "Le compte de **{player}** a été délié."
+      resynced: "Rôles de **{player}** resynchronisés."
+      bypass: "Bypass de **{player}** : {state}"
+      language: "Langue de **{player}** : **{language}**"
+      setting: "**{setting}** → {value}"
+      saved: "Paramètres enregistrés."
+      link-message-sent: "Message de liaison envoyé dans {channel}."
+      mode-restart: "Le bot redémarre pour appliquer la méthode (intent Message Content requis pour le mode salon)."
+
+    errors:
+      generic: "Une erreur est survenue."
+      server-unreachable: "Impossible de joindre le serveur Minecraft."
+      unknown-setting: "Paramètre inconnu."
+      invalid-value: "Valeur invalide."
+      out-of-range: "Valeur hors limites."
+      invalid-id: "Identifiant invalide."
+      unknown-locale: "Langue inconnue."
+      cannot-send: "Impossible d'envoyer le message dans ce salon (permissions du bot ?)."

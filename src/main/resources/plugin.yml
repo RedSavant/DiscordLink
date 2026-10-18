@@ -1,5 +1,50 @@
 name: DiscordLink
 version: '${version}'
 main: fr.redsavant.discordlink.DiscordLinkPlugin
-api-version: 26.2
-author: RS
+api-version: 1.21
+author: RedSavant
+description: Connect your Minecraft server to Discord with account linking, roles, languages and an admin panel.
+website: https://modrinth.com/plugin/discord-link
+
+permissions:
+  discordlink.link:
+    default: true
+  discordlink.unlink:
+    default: true
+  discordlink.info:
+    default: true
+  discordlink.info.others:
+    default: op
+  discordlink.lang:
+    default: true
+  discordlink.admin:
+    default: op
+  discordlink.bypass:
+    default: false
+  discordlink.gui:
+    default: op
+  discordlink.gui.players:
+    default: op
+  discordlink.gui.players.unlink:
+    default: op
+  discordlink.gui.players.resync:
+    default: op
+  discordlink.gui.players.bypass:
+    default: op
+  discordlink.gui.players.lang:
+    default: op
+  discordlink.gui.settings:
+    default: op
+  discordlink.gui.reload:
+    default: op
+  discordlink.gui.*:
+    default: op
+    children:
+      discordlink.gui: true
+      discordlink.gui.players: true
+      discordlink.gui.players.unlink: true
+      discordlink.gui.players.resync: true
+      discordlink.gui.players.bypass: true
+      discordlink.gui.players.lang: true
+      discordlink.gui.settings: true
+      discordlink.gui.reload: true

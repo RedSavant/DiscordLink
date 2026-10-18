@@ -1,5 +1,96 @@
+config-version: 2
+
+language:
+  default: fr_FR
+  auto-detect-client: true
+  auto-detect-discord: true
+  allow-player-choice: true
+
 discord:
-  token: DISCORD_BOT_TOKEN
-  guild-id: GUILD_ID
+  enabled: true
+  token: "YOUR_BOT_TOKEN"
+  guild-id: "000000000000000000"
+  activity:
+    enabled: true
+    type: WATCHING
+    text: "{online}/{max} joueurs"
+    update-interval: 60
+
+roles:
+  linked:
+    enabled: true
+    role-id: "000000000000000000"
+    remove-on-unlink: true
+  online:
+    enabled: true
+    role-id: "000000000000000000"
+    remove-on-quit: true
+  resync-on-startup: true
+  sync-nickname: false
+
+linking:
+  required: true
+  mode: COMMAND
+  channel:
+    channel-id: "000000000000000000"
+    delete-messages: true
+    reply-delete-after: 10
+  message:
+    accent-color: "#5865F2"
+    image: ""
+    server-address: ""
+  code:
+    length: 6
+    expiration: 300
+    charset: "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+  cleanup-interval: 60
+  bypass:
+    permission: "discordlink.bypass"
+    players: []
+
+logs:
+  enabled: true
+  channel-id: "000000000000000000"
+  show-ip: true
+  events:
+    join: true
+    quit: true
+    link: true
+    unlink: true
+    panel-actions: true
+    gui-actions: true
+  colors:
+    join: "#57F287"
+    quit: "#ED4245"
+    link: "#5865F2"
+    unlink: "#FEE75C"
+    admin: "#EB459E"
+
+panel:
+  enabled: true
+  allowed-roles: []
+  ephemeral: true
+  players-per-page: 10
+  accent-color: "#5865F2"
+  confirm-actions: true
+
+gui:
+  enabled: true
+  players-rows: 6
+  confirm-actions: true
+  search-timeout: 30
+  sounds:
+    enabled: true
+    click: UI_BUTTON_CLICK
+    success: ENTITY_EXPERIENCE_ORB_PICKUP
+    error: ENTITY_VILLAGER_NO
+  filler:
+    enabled: true
+    material: GRAY_STAINED_GLASS_PANE
+
+database:
+  type: SQLITE
+  file: "links.db"
 
 debug: false
+check-updates: true
