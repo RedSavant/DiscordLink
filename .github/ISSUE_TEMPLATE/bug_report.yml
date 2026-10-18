@@ -1,0 +1,65 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please check that it has not been reported already.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, and what did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: DiscordLink version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: software
+    attributes:
+      label: Server software
+      options:
+        - Paper
+        - Purpur
+        - Other (fork of Paper)
+    validations:
+      required: true
+  - type: input
+    id: mc-version
+    attributes:
+      label: Minecraft version
+      placeholder: "1.21.4"
+    validations:
+      required: true
+  - type: input
+    id: java-version
+    attributes:
+      label: Java version
+      placeholder: "21"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: "Relevant console output or stack trace. Set debug to true in config.yml for more details. Remove your bot token before pasting!"
+      render: shell
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots, config excerpts, anything else that helps.

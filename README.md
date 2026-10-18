@@ -7,7 +7,7 @@
   <a href="https://purpurmc.org/">
     <img src="assets/assets/cozy/supported/purpur_vector.svg" alt="Purpur">
   </a>
-  <a href="https://modrinth.com/">
+  <a href="https://modrinth.com/plugin/discord-link">
     <img src="assets/assets/cozy/available/modrinth_vector.svg" alt="Modrinth">
   </a>
   <a href="https://discord.gg/fUEDrmRECM">
@@ -302,7 +302,7 @@ Requires Java 21 and `pnpm` (the bot in `bot/` is bundled into the jar). The out
 
 ## Requirements
 
-- **Minecraft**: 1.21 → 26.x (Paper/Purpur)
+- **Minecraft**: 1.21.4 → 26.x (Paper/Purpur)
 - **Java**: 21+
 - **Dependencies**: none (SmartInvs and the bot are included)
 
