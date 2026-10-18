@@ -49,6 +49,9 @@
 - **Fallback system**: missing keys fall back to the default language, no broken messages
 
 ### 🎛️ Admin Panel (Discord Components V2)
+
+![Panel](assets/discordlink/panel.png)
+
 A single `/panel` command opens an interactive, ephemeral control panel built with **Components V2** (containers, sections, separators, buttons, select menus and modals).
 
 **Dashboard**
