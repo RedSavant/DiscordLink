@@ -65,6 +65,7 @@ public class DiscordLinkPlugin extends JavaPlugin {
     private BukkitTask cleanupTask;
     private BukkitTask statusTask;
     private String botFingerprint;
+    private int botGeneration;
 
     @Override
     public void onEnable() {
@@ -208,15 +209,24 @@ public class DiscordLinkPlugin extends JavaPlugin {
             }
             return;
         }
-        BotManager current = botManager;
         botFingerprint = fingerprint();
-        Bukkit.getScheduler().runTaskLaterAsynchronously(this, () -> {
-            if (current != null) {
-                current.destroy();
+        // Only the latest refresh may start a bot, otherwise quick successive changes leave two bots running
+        int generation = ++botGeneration;
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            if (generation != botGeneration) {
+                return;
             }
-            Bukkit.getScheduler().runTask(this, () -> {
-                botManager = null;
-                startBot();
+            BotManager current = botManager;
+            botManager = null;
+            Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+                if (current != null) {
+                    current.destroy();
+                }
+                Bukkit.getScheduler().runTask(this, () -> {
+                    if (generation == botGeneration && botManager == null) {
+                        startBot();
+                    }
+                });
             });
         }, delayTicks);
     }

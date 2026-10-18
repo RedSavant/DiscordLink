@@ -89,6 +89,10 @@ public class BotManager {
 
                     Process process = pb.start();
                     synchronized (this) {
+                        if (!running) {
+                            process.destroyForcibly();
+                            break;
+                        }
                         botProcess = process;
                         writer = new BufferedWriter(new OutputStreamWriter(process.getOutputStream(), StandardCharsets.UTF_8));
                     }
