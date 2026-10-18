@@ -302,7 +302,7 @@ Requires Java 21 and `pnpm` (the bot in `bot/` is bundled into the jar). The out
 
 ## Requirements
 
-- **Minecraft**: 1.21 → 26.x (Paper/Purpur)
+- **Minecraft**: 1.21.4 → 26.x (Paper/Purpur)
 - **Java**: 21+
 - **Dependencies**: none (SmartInvs and the bot are included)
 
