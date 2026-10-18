@@ -57,7 +57,7 @@ public class PlayersMenu implements InventoryProvider {
                     "discord", account.displayDiscordName(),
                     "date", gui.lang().date(locale, account.linkedAt()),
                     "language", gui.lang().displayName(gui.lang().locale(account.uuid())),
-                    "status", gui.lang().raw(locale, online ? "minecraft.gui.states.online" : "minecraft.gui.states.offline")),
+                    "status", gui.lang().rich(locale, online ? "minecraft.gui.states.online" : "minecraft.gui.states.offline")),
                     account.uuid(), account.username());
             return ClickableItem.from(item, data -> {
                 gui.click(player);
@@ -88,14 +88,14 @@ public class PlayersMenu implements InventoryProvider {
 
         String next = FILTERS.get((FILTERS.indexOf(filter) + 1) % FILTERS.size());
         contents.set(nav, 2, ClickableItem.from(gui.item(player, "players.items.filter",
-                "filter", gui.lang().raw(locale, "minecraft.gui.players.filters." + filter),
-                "next", gui.lang().raw(locale, "minecraft.gui.players.filters." + next)), data -> {
+                "filter", gui.lang().rich(locale, "minecraft.gui.players.filters." + filter),
+                "next", gui.lang().rich(locale, "minecraft.gui.players.filters." + next)), data -> {
             gui.click(player);
             open(plugin, player, next, query, 0);
         }));
 
         contents.set(nav, 3, ClickableItem.from(gui.item(player, "players.items.search",
-                "query", query.isEmpty() ? gui.lang().raw(locale, "minecraft.gui.states.none") : query), data -> {
+                "query", query.isEmpty() ? gui.lang().rich(locale, "minecraft.gui.states.none") : query), data -> {
             gui.click(player);
             player.closeInventory();
             plugin.getChatInput().await(player,

@@ -68,7 +68,7 @@ public class PlayerMenu implements InventoryProvider {
                 "date", gui.lang().date(locale, account.linkedAt()),
                 "language", gui.lang().displayName(gui.lang().locale(target)),
                 "bypass", gui.state(player, bypass),
-                "status", gui.lang().raw(locale, online ? "minecraft.gui.states.online" : "minecraft.gui.states.offline")),
+                "status", gui.lang().rich(locale, online ? "minecraft.gui.states.online" : "minecraft.gui.states.offline")),
                 account.uuid(), account.username())));
 
         contents.set(1, 3, ClickableItem.from(gui.item(player, "player.items.unlink"), data -> {

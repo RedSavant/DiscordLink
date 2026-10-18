@@ -191,10 +191,26 @@ public class LangManager {
     public String format(String text, boolean escape, Object... placeholders) {
         String result = text;
         for (int i = 0; i + 1 < placeholders.length; i += 2) {
-            String value = String.valueOf(placeholders[i + 1]);
-            result = result.replace("{" + placeholders[i] + "}", escape ? miniMessage.escapeTags(value) : value);
+            Object placeholder = placeholders[i + 1];
+            String value = String.valueOf(placeholder);
+            boolean trusted = placeholder instanceof Rich;
+            result = result.replace("{" + placeholders[i] + "}", escape && !trusted ? miniMessage.escapeTags(value) : value);
         }
         return result;
+    }
+
+    public Rich rich(String locale, String key) {
+        return new Rich(raw(locale, key));
+    }
+
+    /**
+     * Placeholder value coming from a language file: its MiniMessage tags are kept instead of escaped.
+     */
+    public record Rich(String value) {
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     public String plain(String locale, String key, Object... placeholders) {

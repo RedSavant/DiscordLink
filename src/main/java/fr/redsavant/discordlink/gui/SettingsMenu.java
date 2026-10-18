@@ -69,8 +69,8 @@ public class SettingsMenu implements InventoryProvider {
         String nextMode = modeSetting.values().get((modeSetting.values().indexOf(mode) + 1) % modeSetting.values().size());
         String locale = gui.locale(player);
         contents.set(4, 4, ClickableItem.from(entry(player, modeSetting, "minecraft.gui.settings.mode-lore",
-                "value", gui.lang().raw(locale, "minecraft.gui.settings.modes." + mode),
-                "next", gui.lang().raw(locale, "minecraft.gui.settings.modes." + nextMode)), data -> {
+                "value", gui.lang().rich(locale, "minecraft.gui.settings.modes." + mode),
+                "next", gui.lang().rich(locale, "minecraft.gui.settings.modes." + nextMode)), data -> {
             settings.set(modeSetting.id(), new JsonPrimitive(nextMode), player.getName(), "gui");
             gui.success(player);
             open(plugin, player);

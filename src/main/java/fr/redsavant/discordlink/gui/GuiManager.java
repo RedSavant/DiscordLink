@@ -144,8 +144,8 @@ public class GuiManager {
         return ClickableItem.empty(item);
     }
 
-    public String state(Player viewer, boolean enabled) {
-        return lang().raw(locale(viewer), enabled ? "minecraft.gui.states.enabled" : "minecraft.gui.states.disabled");
+    public LangManager.Rich state(Player viewer, boolean enabled) {
+        return lang().rich(locale(viewer), enabled ? "minecraft.gui.states.enabled" : "minecraft.gui.states.disabled");
     }
 
     public boolean check(Player player, String permission) {
