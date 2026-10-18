@@ -1,7 +1,7 @@
 name: DiscordLink
 version: '${version}'
 main: fr.redsavant.discordlink.DiscordLinkPlugin
-api-version: 26.2
+api-version: 1.21
 author: RedSavant
 description: Connect your Minecraft server to Discord with account linking, roles, languages and an admin panel.
 website: https://modrinth.com/plugin/discord-link

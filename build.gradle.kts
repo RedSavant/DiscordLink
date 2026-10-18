@@ -27,16 +27,16 @@ dependencies {
     implementation("com.github.RedSavant:RSUtils:v1.1.1")
     implementation("fr.minuskube.inv:bukkit-smart-invs:1.5.0")
 
-    paperweight.paperDevBundle("26.2.build.+")
+    paperweight.paperDevBundle("1.21.11-R0.1-SNAPSHOT")
 }
 
 tasks {
     runServer {
-        minecraftVersion("26.2")
+        minecraftVersion("1.21.11")
     }
 }
 
-var targetJavaVersion = 25
+var targetJavaVersion = 21
 
 kotlin {
     jvmToolchain(targetJavaVersion)
@@ -46,7 +46,7 @@ kotlin {
 tasks.withType<io.papermc.paperweight.tasks.JavaLauncherTask>().configureEach {
     launcher.set(
         javaToolchains.launcherFor {
-            languageVersion.set(JavaLanguageVersion.of(25))
+            languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
         }
     )
 }

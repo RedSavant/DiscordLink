@@ -296,14 +296,14 @@ DiscordLink uses **SQLite**:
 ```bash
 ./gradlew build
 ```
-Requires Java 25 and `pnpm` (the bot in `bot/` is bundled into the jar). The output is `build/libs/DiscordLink-<version>-all.jar`.
+Requires Java 21 and `pnpm` (the bot in `bot/` is bundled into the jar). The output is `build/libs/DiscordLink-<version>-all.jar`.
 
 ---
 
 ## Requirements
 
-- **Minecraft**: 26.2+ (Paper/Purpur)
-- **Java**: 25+
+- **Minecraft**: 1.21 → 26.x (Paper/Purpur)
+- **Java**: 21+
 - **Dependencies**: none (SmartInvs and the bot are included)
 
 ---
