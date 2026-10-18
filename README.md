@@ -7,7 +7,7 @@
   <a href="https://purpurmc.org/">
     <img src="assets/assets/cozy/supported/purpur_vector.svg" alt="Purpur">
   </a>
-  <a href="https://modrinth.com/">
+  <a href="https://modrinth.com/plugin/discord-link">
     <img src="assets/assets/cozy/available/modrinth_vector.svg" alt="Modrinth">
   </a>
   <a href="https://discord.gg/fUEDrmRECM">
