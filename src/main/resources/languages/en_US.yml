@@ -1,0 +1,760 @@
+meta:
+  name: "English"
+  flag: "🇺🇸"
+  icon: RED_BANNER
+  minecraft-locales: [en_us, en_gb, en_ca, en_au, en_nz]
+  discord-locales: [en-US, en-GB]
+
+console:
+  bot-starting: "Starting the Discord bot..."
+  bot-ready: "Discord bot logged in as {tag}"
+  bot-exited: "The bot process exited (code {code})"
+  bot-restarting: "Restarting the bot in 5 seconds..."
+  bot-disabled: "The Discord bot is disabled (discord.enabled = false)."
+  token-missing: "The Discord token is missing in config.yml!"
+  linked: "{player} linked their account to {discord}"
+  unlinked: "{player} was unlinked (by {actor})"
+  setting-changed: "Setting {path} = {value} (by {actor})"
+  reloaded-by: "Configuration reloaded by {actor}"
+  update-available: "A new version is available: {latest} (current: {current}) → {url}"
+
+minecraft:
+  prefix: "<dark_gray>[<gradient:#5865F2:#EB459E>DiscordLink</gradient>]</dark_gray> "
+  date-format: "MM/dd/yyyy hh:mm a"
+
+  errors:
+    players-only: "<red>This command can only be used by players.</red>"
+    no-permission: "<red>You don't have permission.</red>"
+    player-not-found: "<red>No linked account found for <yellow>{player}</yellow>.</red>"
+    unknown-locale: "<red>Unknown language: <yellow>{locale}</yellow>.</red>"
+    gui-disabled: "<red>Menus are disabled on this server.</red>"
+    lang-disabled: "<red>Changing language is disabled on this server.</red>"
+
+  link:
+    code: "<gray>Your linking code: <click:copy_to_clipboard:'{code}'><hover:show_text:'<gray>Click to copy</gray>'><yellow><bold>{code}</bold></yellow></hover></click><newline>{instructions}<newline><gray>It expires in <yellow>{minutes} min</yellow>.</gray>"
+    already-linked: "<yellow>Your account is already linked to <aqua>{discord}</aqua>.</yellow>"
+    linked: "<green>✔ Your account has been linked to <aqua>{discord}</aqua>!</green>"
+
+  unlink:
+    success: "<green>✔ Your Discord account has been unlinked.</green>"
+    not-linked: "<red>Your account is not linked to any Discord account.</red>"
+    notify: "<yellow>Your Discord account was unlinked by <aqua>{actor}</aqua>.</yellow>"
+
+  linkinfo:
+    not-linked: "<red>Your account is not linked. Use <aqua>/link</aqua> to get a code.</red>"
+    other-not-linked: "<red><yellow>{player}</yellow> has no linked account.</red>"
+    details:
+      - "<dark_gray>────────────────────────</dark_gray>"
+      - "<gradient:#5865F2:#EB459E><bold>⛓ {player}'s link</bold></gradient>"
+      - "<gray>UUID:</gray> <white>{uuid}</white>"
+      - "<gray>Discord:</gray> <aqua>{discord}</aqua> <dark_gray>({discord_id})</dark_gray>"
+      - "<gray>Linked on:</gray> <white>{date}</white>"
+      - "<gray>Language:</gray> <white>{language}</white>"
+      - "<dark_gray>────────────────────────</dark_gray>"
+
+  lang:
+    current: "<gray>Current language: <yellow>{language}</yellow></gray>"
+    changed: "<green>✔ Language set to <yellow>{language}</yellow>.</green>"
+    list-entry: "<dark_gray>»</dark_gray> <click:run_command:'/lang {locale}'><hover:show_text:'<gray>Click to select</gray>'><yellow>{language}</yellow> <dark_gray>({locale})</dark_gray></hover></click>"
+
+  forceunlink:
+    usage: "<red>Usage: <yellow>/forceunlink <player></yellow></red>"
+    success: "<green>✔ <yellow>{player}</yellow>'s account has been unlinked.</green>"
+
+  reload:
+    success: "<green>✔ Configuration and languages reloaded.</green>"
+
+  version: "<gray>DiscordLink <green>v{version}</green> by <aqua>RedSavant</aqua></gray>"
+
+  help:
+    - "<dark_gray>────────────────────────</dark_gray>"
+    - "<gradient:#5865F2:#EB459E><bold>⛓ DiscordLink</bold></gradient>"
+    - "<yellow>/link</yellow> <gray>Get a linking code</gray>"
+    - "<yellow>/unlink</yellow> <gray>Unlink your Discord account</gray>"
+    - "<yellow>/linkinfo [player]</yellow> <gray>View linking information</gray>"
+    - "<yellow>/lang [language]</yellow> <gray>Change your language</gray>"
+    - "<yellow>/forceunlink <player></yellow> <gray>Unlink a player</gray>"
+    - "<yellow>/dl gui</yellow> <gray>Open the admin menu</gray>"
+    - "<yellow>/dl reload</yellow> <gray>Reload the configuration</gray>"
+    - "<dark_gray>────────────────────────</dark_gray>"
+
+  kick:
+    not-linked:
+      - "<gradient:#5865F2:#EB459E><bold>⛓ Account not linked</bold></gradient>"
+      - ""
+      - "<gray>Link your Discord account to join the server.</gray>"
+      - ""
+      - "<gray>Your code:</gray> <yellow><bold>{code}</bold></yellow>"
+      - "{instructions}"
+      - ""
+      - "<dark_gray>The code expires in {minutes} minute(s).</dark_gray>"
+    unlinked:
+      - "<gradient:#5865F2:#EB459E><bold>⛓ Account unlinked</bold></gradient>"
+      - ""
+      - "<gray>Your Discord account has been unlinked.</gray>"
+      - "<gray>Reconnect to get a new code.</gray>"
+
+  instructions:
+    command: "<gray>On Discord, use</gray> <aqua>/link code:{code}</aqua> <gray>or the</gray> <aqua>Link my account</aqua> <gray>button.</gray>"
+    channel: "<gray>On Discord, send this code in the</gray> <aqua>{channel}</aqua> <gray>channel.</gray>"
+    both: "<gray>On Discord, send this code in</gray> <aqua>{channel}</aqua> <gray>or use</gray> <aqua>/link code:{code}</aqua><gray>.</gray>"
+    unknown-channel: "the linking channel"
+
+  update-available: "<yellow>An update is available: <green>{latest}</green> <gray>(current: {current})</gray> <click:open_url:'{url}'><aqua><underlined>Download</underlined></aqua></click></yellow>"
+
+  chat:
+    prompt: "<gray>Type your search in chat <dark_gray>({seconds}s)</dark_gray>. Type <yellow>{cancel}</yellow> to cancel.</gray>"
+    cancel-word: "cancel"
+    cancelled: "<gray>Search cancelled.</gray>"
+    timeout: "<red>Time is up, search cancelled.</red>"
+
+  gui:
+    states:
+      enabled: "<green>Enabled</green>"
+      disabled: "<red>Disabled</red>"
+      online: "<green>● Online</green>"
+      offline: "<gray>● Offline</gray>"
+      unknown: "Unknown"
+      none: "None"
+
+    messages:
+      codes-cleared: "<green>✔ Removed {count} expired code(s).</green>"
+      resynced: "<green>✔ Resynced <yellow>{player}</yellow>'s roles.</green>"
+      bypass: "<green>✔ <yellow>{player}</yellow>'s bypass: {state}</green>"
+      language-set: "<green>✔ <yellow>{player}</yellow>'s language set to <yellow>{language}</yellow>.</green>"
+
+    common:
+      close:
+        material: BARRIER
+        name: "<red>Close</red>"
+      back:
+        material: ARROW
+        name: "<yellow>← Back</yellow>"
+      previous:
+        material: SPECTRAL_ARROW
+        name: "<yellow>← Previous page</yellow>"
+      next:
+        material: SPECTRAL_ARROW
+        name: "<yellow>Next page →</yellow>"
+
+    main:
+      title: "<dark_gray>DiscordLink</dark_gray> <gray>» Menu</gray>"
+      items:
+        bot-online:
+          material: BEACON
+          name: "<green>● Bot online</green>"
+          lore:
+            - "<gray>Bot:</gray> <white>{tag}</white>"
+            - "<gray>Ping:</gray> <white>{ping} ms</white>"
+            - "<gray>Guild:</gray> <white>{guild}</white>"
+        bot-offline:
+          material: BARRIER
+          name: "<red>● Bot offline</red>"
+          lore:
+            - "<gray>The bot is not connected.</gray>"
+            - "<gray>Check the token and the console.</gray>"
+        linked:
+          material: LEAD
+          name: "<aqua>Linked accounts</aqua>"
+          lore:
+            - "<gray>Total:</gray> <white>{count}</white>"
+            - "<gray>Online players:</gray> <white>{online}</white>"
+        codes:
+          material: PAPER
+          name: "<yellow>Pending codes</yellow>"
+          lore:
+            - "<gray>Active codes:</gray> <white>{count}</white>"
+            - ""
+            - "<yellow>Click</yellow> <gray>to remove expired codes</gray>"
+        language:
+          material: BOOK
+          name: "<gold>My language</gold>"
+          lore:
+            - "<gray>Current:</gray> <white>{language}</white>"
+            - ""
+            - "<yellow>Click</yellow> <gray>to change</gray>"
+        players:
+          material: PLAYER_HEAD
+          name: "<aqua>Linked players</aqua>"
+          lore:
+            - "<gray>Browse, search and manage</gray>"
+            - "<gray>linked accounts.</gray>"
+        settings:
+          material: COMPARATOR
+          name: "<gold>Bot settings</gold>"
+          lore:
+            - "<gray>Enable or disable features.</gray>"
+        reload:
+          material: CLOCK
+          name: "<green>Reload</green>"
+          lore:
+            - "<gray>Reloads config.yml and languages.</gray>"
+
+    players:
+      title: "<dark_gray>Linked players</dark_gray> <gray>({page}/{pages})</gray>"
+      filters:
+        all: "All"
+        online: "Online"
+        offline: "Offline"
+      items:
+        player:
+          material: PLAYER_HEAD
+          name: "<aqua>{player}</aqua>"
+          lore:
+            - "<gray>Discord:</gray> <white>{discord}</white>"
+            - "<gray>Linked on:</gray> <white>{date}</white>"
+            - "<gray>Language:</gray> <white>{language}</white>"
+            - "<gray>Status:</gray> {status}"
+            - ""
+            - "<yellow>Click</yellow> <gray>to manage</gray>"
+        empty:
+          material: STRUCTURE_VOID
+          name: "<gray>No player found</gray>"
+        filter:
+          material: HOPPER
+          name: "<yellow>Filter: <white>{filter}</white></yellow>"
+          lore:
+            - "<yellow>Click</yellow> <gray>to switch to:</gray> <white>{next}</white>"
+        search:
+          material: OAK_SIGN
+          name: "<yellow>Search</yellow>"
+          lore:
+            - "<gray>Current:</gray> <white>{query}</white>"
+            - "<gray>Name, UUID or Discord user.</gray>"
+            - ""
+            - "<yellow>Click</yellow> <gray>to type in chat</gray>"
+        clear-search:
+          material: BARRIER
+          name: "<red>Clear search</red>"
+
+    player:
+      title: "<dark_gray>Player</dark_gray> <gray>» {player}</gray>"
+      items:
+        info:
+          material: PLAYER_HEAD
+          name: "<aqua>{player}</aqua>"
+          lore:
+            - "<gray>UUID:</gray> <white>{uuid}</white>"
+            - "<gray>Discord:</gray> <white>{discord}</white> <dark_gray>({discord_id})</dark_gray>"
+            - "<gray>Linked on:</gray> <white>{date}</white>"
+            - "<gray>Language:</gray> <white>{language}</white>"
+            - "<gray>Bypass:</gray> {bypass}"
+            - "<gray>Status:</gray> {status}"
+        unlink:
+          material: SHEARS
+          name: "<red>Unlink account</red>"
+          lore:
+            - "<gray>Removes the Discord link.</gray>"
+            - "<gray>The player is kicked if linking is required.</gray>"
+        resync:
+          material: ENDER_PEARL
+          name: "<aqua>Resync roles</aqua>"
+          lore:
+            - "<gray>Re-applies Discord roles.</gray>"
+        bypass:
+          material: SHIELD
+          name: "<gold>Bypass</gold>"
+          lore:
+            - "<gray>State:</gray> {state}"
+            - "<gray>Allows joining without linking.</gray>"
+            - ""
+            - "<yellow>Click</yellow> <gray>to toggle</gray>"
+        language:
+          material: BOOK
+          name: "<gold>Language</gold>"
+          lore:
+            - "<gray>Current:</gray> <white>{language}</white>"
+            - ""
+            - "<yellow>Click</yellow> <gray>to change</gray>"
+
+    confirm:
+      title: "<dark_red>Confirmation</dark_red>"
+      items:
+        confirm:
+          material: LIME_CONCRETE
+          name: "<green><bold>Confirm</bold></green>"
+        cancel:
+          material: RED_CONCRETE
+          name: "<red><bold>Cancel</bold></red>"
+      actions:
+        unlink:
+          material: SHEARS
+          name: "<red>Unlink {player}?</red>"
+          lore:
+            - "<gray>This action cannot be undone.</gray>"
+
+    language:
+      title: "<dark_gray>Language</dark_gray> <gray>» {player}</gray>"
+      items:
+        entry:
+          name: "<gold>{language}</gold>"
+          lore:
+            - "<dark_gray>{locale}</dark_gray>"
+            - ""
+            - "<yellow>Click</yellow> <gray>to select</gray>"
+          lore-selected:
+            - "<dark_gray>{locale}</dark_gray>"
+            - ""
+            - "<green>✔ Current language</green>"
+
+    settings:
+      title: "<dark_gray>Settings</dark_gray> <gray>» Bot</gray>"
+      toggle-lore:
+        - ""
+        - "<gray>State:</gray> {state}"
+        - "<yellow>Click</yellow> <gray>to toggle</gray>"
+      number-lore:
+        - ""
+        - "<gray>Value:</gray> <white>{value}</white>"
+        - "<yellow>Left click</yellow> <gray>+{step}</gray> <dark_gray>|</dark_gray> <yellow>Right click</yellow> <gray>-{step}</gray>"
+        - "<yellow>Shift</yellow> <gray>for ×10</gray> <dark_gray>(min {min}, max {max})</dark_gray>"
+      locale-lore:
+        - ""
+        - "<gray>Current:</gray> <white>{value}</white>"
+        - "<yellow>Click</yellow> <gray>to switch to the next one</gray>"
+      mode-lore:
+        - ""
+        - "<gray>Current:</gray> <white>{value}</white>"
+        - "<yellow>Click</yellow> <gray>to switch to:</gray> <white>{next}</white>"
+      modes:
+        COMMAND: "Command / button"
+        CHANNEL: "Channel"
+        BOTH: "Command + channel"
+      entries:
+        linking-required:
+          material: IRON_DOOR
+          name: "<aqua>Mandatory linking</aqua>"
+          description: ["<gray>Kicks players who are not linked.</gray>"]
+        linking-channel-delete-messages:
+          material: LAVA_BUCKET
+          name: "<aqua>Delete sent codes</aqua>"
+          description: ["<gray>Deletes messages in the linking channel.</gray>"]
+        linking-mode:
+          material: OBSERVER
+          name: "<gold>Linking method</gold>"
+          description: ["<gray>How players enter their code.</gray>"]
+        roles-linked-enabled:
+          material: NAME_TAG
+          name: "<aqua>\"Linked\" role</aqua>"
+          description: ["<gray>Gives a role to linked accounts.</gray>"]
+        roles-linked-remove-on-unlink:
+          material: SHEARS
+          name: "<aqua>Remove role on unlink</aqua>"
+          description: ["<gray>Removes the \"linked\" role on unlink.</gray>"]
+        roles-online-enabled:
+          material: LIME_DYE
+          name: "<aqua>\"Online\" role</aqua>"
+          description: ["<gray>Role for connected players.</gray>"]
+        roles-online-remove-on-quit:
+          material: GRAY_DYE
+          name: "<aqua>Remove on quit</aqua>"
+          description: ["<gray>Removes the \"online\" role on quit.</gray>"]
+        roles-resync-on-startup:
+          material: RECOVERY_COMPASS
+          name: "<aqua>Resync on startup</aqua>"
+          description: ["<gray>Resyncs roles when the bot starts.</gray>"]
+        roles-sync-nickname:
+          material: WRITABLE_BOOK
+          name: "<aqua>Sync nickname</aqua>"
+          description: ["<gray>Renames members to their Minecraft name.</gray>"]
+        logs-enabled:
+          material: BOOKSHELF
+          name: "<aqua>Logs</aqua>"
+          description: ["<gray>Enables every Discord log.</gray>"]
+        logs-show-ip:
+          material: SPYGLASS
+          name: "<aqua>Show IP</aqua>"
+          description: ["<gray>Shows the IP in join logs.</gray>"]
+        logs-events-join:
+          material: OAK_DOOR
+          name: "<aqua>Join logs</aqua>"
+        logs-events-quit:
+          material: DARK_OAK_DOOR
+          name: "<aqua>Quit logs</aqua>"
+        logs-events-link:
+          material: LEAD
+          name: "<aqua>Link logs</aqua>"
+        logs-events-unlink:
+          material: TRIPWIRE_HOOK
+          name: "<aqua>Unlink logs</aqua>"
+        logs-events-panel-actions:
+          material: COMMAND_BLOCK
+          name: "<aqua>Discord panel logs</aqua>"
+        logs-events-gui-actions:
+          material: CHEST
+          name: "<aqua>In-game menu logs</aqua>"
+        language-auto-detect-client:
+          material: COMPASS
+          name: "<aqua>Minecraft language detection</aqua>"
+          description: ["<gray>Uses the client language on first join.</gray>"]
+        language-auto-detect-discord:
+          material: ENDER_EYE
+          name: "<aqua>Discord language detection</aqua>"
+          description: ["<gray>The bot replies in the Discord language.</gray>"]
+        language-allow-player-choice:
+          material: BOOK
+          name: "<aqua>Language choice</aqua>"
+          description: ["<gray>Allows the /lang command.</gray>"]
+        discord-activity-enabled:
+          material: JUKEBOX
+          name: "<aqua>Bot activity</aqua>"
+          description: ["<gray>Shows the player count as activity.</gray>"]
+        panel-confirm-actions:
+          material: REDSTONE_TORCH
+          name: "<aqua>Confirmation (panel)</aqua>"
+          description: ["<gray>Asks for confirmation on Discord.</gray>"]
+        gui-confirm-actions:
+          material: LEVER
+          name: "<aqua>Confirmation (menus)</aqua>"
+          description: ["<gray>Asks for confirmation in game.</gray>"]
+        linking-code-length:
+          material: PAPER
+          name: "<gold>Code length</gold>"
+        linking-code-expiration:
+          material: CLOCK
+          name: "<gold>Code expiration (s)</gold>"
+        language-default:
+          material: GLOBE_BANNER_PATTERN
+          name: "<gold>Default language</gold>"
+
+discord:
+  commands:
+    link:
+      description: "Link your Minecraft account"
+      options:
+        code: "The code you received in game"
+    unlink:
+      description: "Unlink your Minecraft account"
+    linkinfo:
+      description: "View linking information"
+      options:
+        user: "User to look up"
+    lang:
+      description: "Choose the bot language"
+    panel:
+      description: "Open the DiscordLink admin panel"
+    linkmessage:
+      description: "Send the message explaining how to link"
+      options:
+        channel: "Channel to send the message to (default: linking channel)"
+
+  common:
+    online: "{e:online} Online"
+    offline: "{e:offline} Offline"
+    enabled: "{e:enabled} Enabled"
+    disabled: "{e:disabled} Disabled"
+    none: "*None*"
+
+  errors:
+    server-unreachable: "Unable to reach the Minecraft server, try again later."
+    generic: "Something went wrong."
+
+  link:
+    success: "### {e:success} Account linked!\nYour Discord account is now linked to **{player}**.\nYou can join the server."
+    invalid-code: "### {e:error} Invalid code\nThis code is invalid or has expired. Reconnect to the server to get a new one."
+    discord-already-linked: "### {e:warning} Already linked\nYour Discord account is already linked to **{player}**. Use `/unlink` first."
+    player-already-linked: "### {e:warning} Already linked\nThe account **{player}** is already linked to another Discord account."
+    channel-hint: "Only send your **linking code** in this channel (you get it when joining the server)."
+
+  link-message:
+    title: "## {e:link} Link your Minecraft account"
+    intro:
+      - "To play on **{server}**, your Minecraft account must be linked to your Discord account."
+      - "-# Server address: `{address}`"
+    steps:
+      command:
+        - "**1.** Join the Minecraft server: you will be kicked with a **{length}-character code**."
+        - "**2.** Click **Link my account** below and enter your code."
+        - "**3.** Done! Reconnect to the server."
+        - "-# You can also use the `/link code:<code>` command."
+      channel:
+        - "**1.** Join the Minecraft server: you will be kicked with a **{length}-character code**."
+        - "**2.** Simply send that code in {channel}."
+        - "**3.** Done! Reconnect to the server."
+      both:
+        - "**1.** Join the Minecraft server: you will be kicked with a **{length}-character code**."
+        - "**2.** Click **Link my account** below, or send your code in {channel}."
+        - "**3.** Done! Reconnect to the server."
+    footer: "-# {e:timer} The code expires after {minutes} minute(s)."
+    buttons:
+      link: "Link my account"
+      info: "My information"
+    modal:
+      title: "Link my Minecraft account"
+      label: "Linking code"
+      description: "The code shown when you joined the server"
+      placeholder: "E.g. ABC123 ({length} characters)"
+
+  unlink:
+    success: "### {e:success} Account unlinked\nYour account is no longer linked to **{player}**."
+    not-linked: "Your Discord account is not linked to any Minecraft account."
+
+  linkinfo:
+    self-not-linked: "Your account is not linked. Join the server to get a code, then use `/link`."
+    not-linked: "{user} has no linked Minecraft account."
+    title: "{e:account} {player}"
+    lines:
+      - "**Discord**: {discord}"
+      - "**UUID**: `{uuid}`"
+      - "**Linked on**: {date} ({relative})"
+      - "**Language**: {language}"
+      - "**Status**: {status}"
+
+  lang:
+    title: "{e:language} Bot language"
+    current: "Current language: **{language}**"
+    placeholder: "Choose a language"
+    auto: "Automatic"
+    auto-description: "Follow your Discord client language"
+    changed: "Language changed: **{language}**"
+
+  logs:
+    not-linked: "*Not linked*"
+    join:
+      title: "{e:join} Join"
+      lines:
+        - "**Player**: `{player}`"
+        - "**UUID**: `{uuid}`"
+        - "**Discord**: {discord}"
+        - "**IP**: ||`{ip}`||"
+    quit:
+      title: "{e:quit} Quit"
+      lines:
+        - "**Player**: `{player}`"
+        - "**UUID**: `{uuid}`"
+        - "**Discord**: {discord}"
+    link:
+      title: "{e:link} Account linked"
+      lines:
+        - "**Player**: `{player}`"
+        - "**UUID**: `{uuid}`"
+        - "**Discord**: {discord}"
+    unlink:
+      title: "{e:unlinked} Account unlinked"
+      lines:
+        - "**Player**: `{player}`"
+        - "**UUID**: `{uuid}`"
+        - "**Discord**: {discord}"
+        - "**By**: {actor}"
+    gui:
+      title: "{e:gui-action} In-game action"
+      lines:
+        - "**Admin**: `{actor}`"
+        - "**Action**: {action}"
+        - "**Target**: `{target}`"
+        - "**Value**: {value}"
+      actions:
+        reload: "Configuration reload"
+        clear-codes: "Expired codes removal"
+        unlink: "Force unlink"
+        resync: "Roles resync"
+        bypass-on: "Bypass enabled"
+        bypass-off: "Bypass disabled"
+        language: "Language change"
+        setting: "Setting change"
+        link-message: "Link message sent"
+    panel:
+      title: "{e:panel-action} Panel action"
+      lines:
+        - "**Admin**: {actor}"
+        - "**Action**: {action}"
+        - "**Target**: `{target}`"
+        - "**Value**: {value}"
+      actions:
+        reload: "Configuration reload"
+        clear-codes: "Expired codes removal"
+        unlink: "Force unlink"
+        resync: "Roles resync"
+        bypass-on: "Bypass enabled"
+        bypass-off: "Bypass disabled"
+        language: "Language change"
+        setting: "Setting change"
+        link-message: "Link message sent"
+
+  panel:
+    subtitle: "DiscordLink v{version}"
+    disabled: "The panel is disabled."
+    no-access: "You don't have access to the DiscordLink panel."
+
+    dashboard:
+      title: "{e:dashboard} Dashboard"
+      status-online: "{e:status-online} Online"
+      status-offline: "{e:status-offline} Offline"
+      bot-title: "{e:bot} Bot"
+      bot:
+        - "**Status**: {status}"
+        - "**Account**: `{tag}`"
+        - "**Ping**: {ping} ms"
+        - "**Started**: {uptime}"
+      server-title: "{e:server} Minecraft server"
+      server:
+        - "**Status**: {status}"
+        - "**Version**: {software} {version}"
+        - "**Players**: {online}/{max}"
+        - "**TPS**: {tps}"
+        - "**Plugin started**: {uptime}"
+      links-title: "{e:links} Links"
+      links:
+        - "**Linked accounts**: {linked}"
+        - "**Pending codes**: {pending}"
+
+    buttons:
+      players: "Players"
+      settings: "Settings"
+      refresh: "Refresh"
+      reload: "Reload"
+      clear-codes: "Purge codes"
+      previous: "Previous"
+      next: "Next"
+      filter: "Filter: {filter}"
+      search: "Search"
+      back: "Back"
+      clear-search: "Clear"
+      unlink: "Unlink"
+      resync: "Resync roles"
+      bypass-on: "Enable bypass"
+      bypass-off: "Remove bypass"
+      confirm: "Confirm"
+      cancel: "Cancel"
+      codes: "Codes & timings"
+      link-message: "Link message"
+      send-link-channel: "Send to linking channel"
+
+    players:
+      title: "{e:players} Linked players ({count})"
+      info: "Page {page}/{pages} · Filter: {filter}"
+      search-active: "Search: \"{query}\""
+      empty: "*No player matches.*"
+      line: "`{index}.` {status} **{player}** · {discord} · {date}"
+      select-placeholder: "Select a player to manage"
+      filters:
+        all: "All"
+        online: "Online"
+        offline: "Offline"
+
+    player:
+      not-found: "Player not found"
+      title: "{e:player} {player}"
+      lines:
+        - "**Discord**: {discord} (`{discord_name}`)"
+        - "**Discord ID**: `{discord_id}`"
+        - "**UUID**: `{uuid}`"
+        - "**Linked on**: {date} ({relative})"
+        - "**Language**: {language}"
+        - "**Bypass**: {bypass}"
+        - "**Status**: {status}"
+      language-placeholder: "Change the player's language"
+
+    link-message:
+      title: "{e:link-message} Link message"
+      description:
+        - "Send the message explaining to players how to link their account. Preview below."
+        - "**Method**: {mode}"
+        - "**Linking channel**: {channel}"
+        - "**Message language**: {language}"
+        - "-# Edit the text in `languages/<locale>.yml` (`discord.link-message` section), the color and image in `config.yml`."
+      channel-placeholder: "Choose the channel to send the message to"
+
+    confirm:
+      title: "{e:warning} Confirmation"
+      unlink: "Do you really want to unlink **{player}**'s account?\nThey will be kicked if linking is required."
+
+    settings:
+      title: "{e:settings} Bot settings"
+      toggles-title: "Features"
+      values-title: "Values"
+      values:
+        - "**Linked role**: {linked_role}"
+        - "**Online role**: {online_role}"
+        - "**Log channel**: {log_channel}"
+        - "**Linking method**: {link_mode} · **Linking channel**: {link_channel}"
+        - "**Panel roles**: {panel_roles}"
+        - "**Default language**: {language}"
+        - "**Codes**: {code_length} characters · expire after {code_expiration}s"
+        - "**Players per page**: {per_page} · **Activity refreshed** every {interval}s"
+      toggle-placeholder: "Enable / disable a feature"
+      click-enable: "Disabled · select to enable"
+      click-disable: "Enabled · select to disable"
+      linked-role-placeholder: "Role given to linked accounts"
+      online-role-placeholder: "Role given to online players"
+      channel-placeholder: "Log channel"
+      panel-roles-placeholder: "Roles allowed to use /panel"
+      mode-placeholder: "How players enter their code"
+      link-channel-placeholder: "Linking channel"
+      modes:
+        COMMAND: "Command / button"
+        CHANNEL: "Channel"
+        BOTH: "Command + channel"
+      modes-description:
+        COMMAND: "/link or the \"Link my account\" button (modal)"
+        CHANNEL: "Players send their code in the linking channel"
+        BOTH: "Both methods are accepted"
+      locale-placeholder: "Default language"
+      labels:
+        linking-required: "Mandatory linking"
+        linking-channel-delete-messages: "Delete codes sent in the channel"
+        linking-mode: "Linking method"
+        linking-channel-channel-id: "Linking channel"
+        roles-linked-enabled: "\"Linked\" role"
+        roles-linked-remove-on-unlink: "Remove linked role on unlink"
+        roles-online-enabled: "\"Online\" role"
+        roles-online-remove-on-quit: "Remove online role on quit"
+        roles-resync-on-startup: "Resync roles on startup"
+        roles-sync-nickname: "Sync nickname"
+        logs-enabled: "Logs"
+        logs-show-ip: "Show IP in logs"
+        logs-events-join: "Join logs"
+        logs-events-quit: "Quit logs"
+        logs-events-link: "Link logs"
+        logs-events-unlink: "Unlink logs"
+        logs-events-panel-actions: "Panel logs"
+        logs-events-gui-actions: "In-game menu logs"
+        language-auto-detect-client: "Minecraft language detection"
+        language-auto-detect-discord: "Discord language detection"
+        language-allow-player-choice: "Players can choose language"
+        discord-activity-enabled: "Bot activity status"
+        panel-confirm-actions: "Panel confirmation"
+        gui-confirm-actions: "Menu confirmation"
+        linking-code-length: "Code length"
+        linking-code-expiration: "Code expiration"
+        discord-activity-update-interval: "Activity interval"
+        panel-players-per-page: "Players per page"
+        roles-linked-role-id: "Linked role"
+        roles-online-role-id: "Online role"
+        logs-channel-id: "Log channel"
+        panel-allowed-roles: "Panel roles"
+        language-default: "Default language"
+
+    modals:
+      search:
+        title: "Search a player"
+        label: "Name, UUID or Discord user"
+        placeholder: "Leave empty to show everyone"
+      codes:
+        title: "Codes & timings"
+        length: "Code length (4-16)"
+        expiration: "Code expiration (30-3600 s)"
+        per-page: "Players per page (1-25)"
+        interval: "Activity refresh (15-3600 s)"
+
+    notices:
+      reloaded: "Configuration and languages reloaded."
+      codes-cleared: "Removed {count} expired code(s)."
+      unlinked: "**{player}**'s account has been unlinked."
+      resynced: "Resynced **{player}**'s roles."
+      bypass: "**{player}**'s bypass: {state}"
+      language: "**{player}**'s language: **{language}**"
+      setting: "**{setting}** → {value}"
+      saved: "Settings saved."
+      link-message-sent: "Link message sent in {channel}."
+      mode-restart: "The bot is restarting to apply the method (Message Content intent required for channel mode)."
+
+    errors:
+      generic: "Something went wrong."
+      server-unreachable: "Unable to reach the Minecraft server."
+      unknown-setting: "Unknown setting."
+      invalid-value: "Invalid value."
+      out-of-range: "Value out of range."
+      invalid-id: "Invalid ID."
+      unknown-locale: "Unknown language."
+      cannot-send: "Unable to send the message in this channel (bot permissions?)."
