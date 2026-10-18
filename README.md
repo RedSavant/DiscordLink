@@ -113,7 +113,7 @@ Open the main menu with `/discordlink gui` (alias `/dl gui`).
 - **Mandatory linking**: require Discord linking before joining the server
 - **Bypass system**: players, UUIDs or permission can skip linking
 
-<a href="https://modrinth.com/plugin/discord-link/gallery"><img src="assets/discordlink/kick.png" alt="Kick" width="350"></a>
+<a href="https://modrinth.com/plugin/discord-link/gallery"><img src="assets/discordlink/kick.png" alt="Kick" width="750"></a>
 
 ### 🤖 Discord Bot Integration
 - **Automatic role management**: roles assigned on link
