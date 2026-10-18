@@ -1,17 +1,17 @@
-![First](https://raw.githubusercontent.com/RedSavant/Discord-link-assets-/refs/heads/v3/modrinth/discordbanner.png)
+![First](assets/modrinth/discordbanner.png)
 <br>
 <p align="center">
   <a href="https://papermc.io/">
-    <img src="https://raw.githubusercontent.com/RedSavant/Discord-link-assets/refs/heads/v3/assets/cozy/supported/paper_vector.svg" alt="Paper">
+    <img src="assets/assets/cozy/supported/paper_vector.svg" alt="Paper">
   </a>
   <a href="https://purpurmc.org/">
-    <img src="https://raw.githubusercontent.com/RedSavant/Discord-link-assets/refs/heads/v3/assets/cozy/supported/purpur_vector.svg" alt="Purpur">
+    <img src="assets/assets/cozy/supported/purpur_vector.svg" alt="Purpur">
   </a>
   <a href="https://modrinth.com/">
-    <img src="https://raw.githubusercontent.com/RedSavant/Discord-link-assets/refs/heads/v3/assets/cozy/available/modrinth_vector.svg" alt="Modrinth">
+    <img src="assets/assets/cozy/available/modrinth_vector.svg" alt="Modrinth">
   </a>
   <a href="https://discord.gg/fUEDrmRECM">
-    <img src="https://raw.githubusercontent.com/RedSavant/Discord-link-assets/refs/heads/v3/assets/cozy/social/discord-singular_vector.svg" alt="Discord">
+    <img src="assets/assets/cozy/social/discord-singular_vector.svg" alt="Discord">
   </a>
 </p>
 
@@ -311,6 +311,12 @@ Found a bug? Want to add a language?
 - Open an issue or a PR on GitHub
 - Join our Discord community
 - Star the project if you find it useful
+
+---
+
+## Credits
+
+Badges in [`assets/`](assets) come from [Devin's Badges](https://github.com/intergrav/devins-badges) by intergrav, under the MIT License — see [`assets/LICENSE`](assets/LICENSE).
 
 ---
 
